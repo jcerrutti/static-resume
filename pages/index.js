@@ -1,8 +1,9 @@
 import Head from "next/head";
-import { Box, Heading, Text } from "@chakra-ui/core";
+import { Box, Heading, Text, Flex } from "@chakra-ui/core";
 import styles from "../styles/Home.module.css";
 import JobsAccordion from "../components/JobsAccordion";
 import Header from "../components/Header";
+import DarkModeToggle from "../components/DarkModeToggle";
 
 const jobs = [
   {
@@ -120,38 +121,52 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <Box
-          mr="2rem"
-          width={[
-            "100%", // base
-            "100%", // 480px upwards
-            "100%", // 768px upwards
-            "50%", // 992px upwards
-          ]}
-        >
-          <Header />
-          <Text textAlign="justify">
-            My passion is to solve problems, I'm always trying to find the best
-            path to achieve a solution. No matter what technology, if I don't
-            know about it, I will be happy to learn new things if at the end of
-            the day that helps. I'm specialized on React and Angular, working on
-            big projects, using server-side rendering strategies and Node.js for
-            backend solutions.
-          </Text>
-        </Box>
-        <Box
-          width={[
-            "100%", // base
-            "100%", // 480px upwards
-            "100%", // 768px upwards
-            "50%", // 992px upwards
-          ]}
-        >
-          <Heading mb="1rem" Heading as="h3" size="lg">
-            Experience
-          </Heading>
-          <JobsAccordion jobs={jobs} />
-        </Box>
+        <Flex direction="column">
+          <Box alignSelf="flex-end">
+            <DarkModeToggle />
+          </Box>
+          <Flex
+            direction={[
+              "column", // base
+              "column", // 480px upwards
+              "column", // 768px upwards
+              "row", // 992px upwards
+            ]}
+          >
+            <Box
+              mr="2rem"
+              width={[
+                "100%", // base
+                "100%", // 480px upwards
+                "100%", // 768px upwards
+                "50%", // 992px upwards
+              ]}
+            >
+              <Header />
+              <Text textAlign="justify">
+                My passion is to solve problems, I'm always trying to find the
+                best path to achieve a solution. No matter what technology, if I
+                don't know about it, I will be happy to learn new things if at
+                the end of the day that helps. I'm specialized on React and
+                Angular, working on big projects, using server-side rendering
+                strategies and Node.js for backend solutions.
+              </Text>
+            </Box>
+            <Box
+              width={[
+                "100%", // base
+                "100%", // 480px upwards
+                "100%", // 768px upwards
+                "50%", // 992px upwards
+              ]}
+            >
+              <Heading mb="1rem" Heading as="h3" boxSize="lg">
+                Experience
+              </Heading>
+              <JobsAccordion jobs={jobs} />
+            </Box>
+          </Flex>
+        </Flex>
       </main>
     </div>
   );

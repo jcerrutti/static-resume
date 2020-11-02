@@ -1,11 +1,18 @@
 import "../styles/globals.css";
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ThemeProvider, ColorModeProvider, CSSReset } from "@chakra-ui/core";
+import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <ThemeProvider>
-      <CSSReset />
-      <Component {...pageProps} />
+      <ColorModeProvider>
+        <CSSReset />
+        {isMounted && <Component {...pageProps} />}
+      </ColorModeProvider>
     </ThemeProvider>
   );
 }
